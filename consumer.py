@@ -1,6 +1,8 @@
 import pika
 import sys
 import os
+import ast
+import json
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
@@ -8,7 +10,16 @@ channel = connection.channel()
 channel.queue_declare(queue="hello")
 
 def callback(ch, method, properties, body):
-    print(f" [X] Received {body}")
+    msg = json.loads(body)
+    print(f" [X] Received")
+    print(msg)
+    
+    # if msg['gender'] == 'male':
+    #     print("it's a dude!!")
+    # elif msg['gender'] == 'female':
+    #     print("'ts a chick!")
+    # else:
+    #     print("no gender ")
 
 channel.basic_consume(queue='hello', auto_ack=True, on_message_callback=callback)
 
