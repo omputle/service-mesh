@@ -4,8 +4,6 @@ import json
 import pika
 from RabbitMQ.sender import send as send_message
 
-
-
 app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
@@ -15,6 +13,16 @@ def hello_world():
 
 @app.route("/S/statement")
 def statement():
+    json_obj = {
+        "meta": {
+            "id": "",
+            "type": "request",
+            "source": "G",
+            "subject": "transactions.statement",
+        },
+        "data": "null"
+    }
+    send_message(message=json.dumps(json_obj), name_of_queue='hello')
     return "<p>Statement</p>"
 
 @app.route("/webhook/B", methods=['POST'])
