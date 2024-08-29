@@ -41,13 +41,13 @@ def callback1(ch, method, properties, body):
     tagged_msg = handle_webhook(data)
     send_message(name_of_queue="transaction.record", message=json.dumps(tagged_msg))
 
-def callback2(ch, method, properties, body):
+def service_callback(ch, method, properties, body):
     print("Received Health check on B")
     # print(body.decode("utf-8"))
     send_message(name_of_queue="health.B_response", message=get_health_status("test"))
 
 channel.basic_consume(queue='webhook.B', auto_ack=True, on_message_callback=callback1)
-channel.basic_consume(queue='health.B', auto_ack=True, on_message_callback=callback2)
+channel.basic_consume(queue='health.B', auto_ack=True, on_message_callback=service_callback)
 
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()

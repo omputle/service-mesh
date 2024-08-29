@@ -2,7 +2,7 @@ import json
 import pika
 from RabbitMQ.sender import send as send_message
 
-SERVICE_ID = ""
+SERVICE_ID = "A_UUiDv4"
 
 def generate_transaction(id: str, description: str, amount: float):
     transaction = {

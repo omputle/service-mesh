@@ -2,7 +2,7 @@ import pika
 import json
 from RabbitMQ.sender import send as send_message
 
-SERVICE_ID = ""
+SERVICE_ID = "C_UUiDv4"
 
 def get_health_status(request_id:str):
     status = {
