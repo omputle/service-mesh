@@ -6,6 +6,9 @@ from RabbitMQ.sender import send as send_message
 
 app = Flask(__name__)
 
+
+SERVICE_ID = ""
+
 @app.route("/", methods=['GET'])
 def hello_world():
     send_message(message="From HTTP", name_of_queue="hello")
@@ -13,7 +16,7 @@ def hello_world():
 
 @app.route("/S/statement")
 def statement():
-    json_obj = {
+    transaction = {
         "meta": {
             "id": "",
             "type": "request",
@@ -22,14 +25,37 @@ def statement():
         },
         "data": "null"
     }
-    send_message(message=json.dumps(json_obj), name_of_queue='hello')
+    send_message(message=json.dumps(transaction), name_of_queue='hello')
     return "<p>Statement</p>"
 
 @app.route("/webhook/B", methods=['POST'])
 def webhook():
-    send_message(message=request.data, name_of_queue="hello")
+    transactions = request.data
+    json_obj = {
+        "meta": {
+            "id": "",
+            "type": "request",
+            "source": "G",
+            "subject": "webhook.B",
+        },
+        "data": transactions.decode('utf-8')
+    }
+    send_message(message=json.dumps(json_obj), name_of_queue='webhook.B')
     return request.data
 
 @app.route("/health/G")
 def service_health():
-    return "<p>OK!</p>"
+    json_obj = {
+        "meta": {
+            "id": "",
+            "type": "request",
+            "source": "G",
+            "subject": "health.G",
+            "request_id": ""
+        },
+        "data": 
+        {
+            "status": "ok"
+        }
+    }
+    return json_obj
