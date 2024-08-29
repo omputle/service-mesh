@@ -1,0 +1,16 @@
+{"id": "12345", "description": "Groceries", "amount": 2000.0, "tag": "B"}
+{"id": "54321", "description": "Electricity", "amount": 530.0, "tag": "B"}
+{"id": "02468", "description": "Water", "amount": 230.0, "tag": "B"}
+{"id": "12345", "description": "Groceries", "amount": 2000.0, "tag": "B"}
+{"id": "54321", "description": "Electricity", "amount": 530.0, "tag": "B"}
+{"id": "02468", "description": "Water", "amount": 230.0, "tag": "B"}
+{"id": "12345", "description": "Groceries", "amount": 2000.0, "tag": "B"}
+{"id": "54321", "description": "Electricity", "amount": 530.0, "tag": "B"}
+{"id": "02468", "description": "Water", "amount": 230.0, "tag": "B"}
+{"id": "12345", "description": "Groceries", "amount": 2000.0, "tag": "B"}
+{"id": "54321", "description": "Electricity", "amount": 530.0, "tag": "B"}
+{"id": "02468", "description": "Water", "amount": 230.0, "tag": "B"}
+{"id": "213", "description": "description", "amount": 209.0, "tag": "A"}
+{"id": "213", "description": "description", "amount": 209.0, "tag": "A"}
+{"id": "213", "description": "description", "amount": 209.0, "tag": "A"}
+{"id": "213", "description": "description", "amount": 209.0, "tag": "A"}
